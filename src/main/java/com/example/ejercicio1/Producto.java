@@ -11,17 +11,21 @@ public class Producto implements Pagable, Serializable {
         this.cantidad = cantidad;
     }
 
-    public double calcularTotal() {
+    public double calcularPago() {
         return this.precio * (double)this.cantidad;
     }
 
     public double aplicarDescuento(double porcentaje) {
-        double total = calcularTotal();
+        double total = calcularPago();
         return total - (total * porcentaje / 100);
     }
 
     public String descripcion() {
         return String.format("Producto: %s | Precio: $%.2f | Cantidad: %d | Total con descuento: $%.2f", this.nombre, this.precio, this.cantidad, this.aplicarDescuento(10));
+    }
+
+    public String serializar() {
+        return String.format("{Tipo: 'Producto', nombre: '%s', precio: %.2f, cantidad: %d, total: %.2f}", nombre, precio, cantidad, calcularPago());
     }
 
     public String getNombre() {
