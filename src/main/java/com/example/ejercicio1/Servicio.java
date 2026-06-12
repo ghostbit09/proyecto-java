@@ -12,12 +12,12 @@ public class Servicio implements Pagable, Serializable {
         this.horasTrabajadas = horasTrabajadas;
     }
 
-    public double calcularTotal() {
+    public double calcularPago() {
         return this.precioHora * this.horasTrabajadas;
     }
 
     public double aplicarDescuento(double porcentaje) {
-        double total = calcularTotal();
+        double total = calcularPago();
         return total - (total * porcentaje / 100);
     }
 
@@ -26,7 +26,7 @@ public class Servicio implements Pagable, Serializable {
     }
 
     public String serializar() {
-        return String.format("{Tipo: 'Servicio', descripcion: '%s', precioHora: %.2f, horas: %.1f, total: %.2f}", descripcion, precioHora, horasTrabajadas, calcularTotal());
+        return String.format("{Tipo: 'Servicio', descripcion: '%s', precioHora: %.2f, horas: %.1f, total: %.2f}", descripcion, precioHora, horasTrabajadas, calcularPago());
     }
 
     public String getDescripcion() {

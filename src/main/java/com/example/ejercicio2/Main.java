@@ -2,7 +2,7 @@ package com.example.ejercicio2;
 
 public class Main {
     public static void main(String[] args) {
-        Factura factura = new Factura("F-001");
+        Factura factura = new Factura();
 
         //Añadir productos
         factura.agregarItem(new Producto("Laptop", 999.99, 1));
